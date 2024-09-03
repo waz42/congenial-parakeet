@@ -30,9 +30,8 @@ install_zsh () {
     echo "----------------------------------"
     echo ""
     apt update
-    apt upgrade zsh
+    apt upgrade -y zsh
     apt install -y zsh
-    chsh -s /bin/zsh
   fi
 }
 
