@@ -35,5 +35,3 @@ install_zsh () {
   fi
 }
 
-check_distribution_name
-install_zsh
