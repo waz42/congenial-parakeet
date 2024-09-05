@@ -24,14 +24,20 @@ check_distribution_name () {
 
 install_zsh () {
   if [ ${distri_name} = "ubuntu" ]; then
-    echo ""
-    echo "----------------------------------"
-    echo "Install zsh"
-    echo "----------------------------------"
-    echo ""
-    apt update
-    apt upgrade -y zsh
-    apt install -y zsh
+    if [ -n `which zsh` ]; then
+      echo "----------------------------------"
+      echo "zsh is already installed"
+      echo "----------------------------------"
+    else
+      echo ""
+      echo "----------------------------------"
+      echo "Install zsh"
+      echo "----------------------------------"
+      echo ""
+      apt update
+      apt upgrade -y zsh
+      apt install -y zsh
+    fi
   fi
 }
 
