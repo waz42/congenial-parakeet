@@ -24,7 +24,7 @@ check_distribution_name () {
 
 install_zsh () {
   if [ ${distri_name} = "ubuntu" ]; then
-    if [ -n `which zsh` ]; then
+    if command -v zsh > /dev/null 2>&1; then
       echo "----------------------------------"
       echo "zsh is already installed"
       echo "----------------------------------"
@@ -34,9 +34,12 @@ install_zsh () {
       echo "Install zsh"
       echo "----------------------------------"
       echo ""
-      apt update
-      apt upgrade -y zsh
-      apt install -y zsh
+
+      read -sp "Password: " password
+      tty -s && echo
+      echo "$password" | sudo -S apt update -y zsh
+      echo "$password" | sudo -S apt upgrade -y zsh
+      echo "$password" | sudo -S apt install -y zsh 
     fi
   fi
 }
